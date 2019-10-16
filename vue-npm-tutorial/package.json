@@ -1,0 +1,29 @@
+{
+  "name": "vue-npm-tutorial",
+  "version": "1.0.0",
+  "description": "Vue with NPM tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Hello World\" && exit 0",
+    "build": "webpack --mode development",
+    "build:dev": "webpack --mode development && webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.6.9"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^2.0.1",
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.9",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
