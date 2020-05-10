@@ -1,0 +1,26 @@
+﻿@model ExtendApp.Models.Album
+
+@*
+    Safe space for simple forms, complexity occurs when js/jquery need to be involved    
+*@
+
+<h1>Mvc Only Example</h1>
+
+<form asp-controller="ModelBinding" asp-action="CreateAlbum">
+    <input asp-for="@Model.Title" />
+    <div>
+        <input asp-for="@Model.Songs[0].Title" />
+    </div>
+    <div>
+        <input asp-for="@Model.Songs[1].Title" />
+    </div>
+    <div>
+        <input asp-for="@Model.Songs[2].Title" />
+    </div>
+
+    <button type="submit">Send iT</button>
+</form>
+
+<script>
+    // js magic here
+</script>

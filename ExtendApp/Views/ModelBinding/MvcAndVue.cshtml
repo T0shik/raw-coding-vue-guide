@@ -1,0 +1,48 @@
+﻿@model ExtendApp.Models.Album
+@*
+    Main thing to keep in mind here:
+    1. The server will render the page
+    2. Vue will load the div#app section
+    3. Vue will re-render the section it has loaded
+    4. State can be lost where vue touches the element tree
+        - it's safe to assume that it will be lost, so code around it
+*@
+
+<h1>Mvc And Vue Example</h1>
+
+<div id="app">
+    <form asp-controller="ModelBinding" asp-action="CreateAlbum" method="post">
+        <p>
+            <button type="button" @@click="rows.push({index: rows.length, title: ''})">Add</button>
+            <button type="button" @@click="rows.pop()">Remove</button>
+        </p>
+        <input asp-for="@Model.Title" />
+        <div v-for="row in rows">
+            <input :name="`Songs[${row.index}].Title`" v-model="row.title" />
+        </div>
+
+        <button type="submit">Send iT</button>
+    </form>
+</div>
+
+
+
+@* How to transfer model state? *@
+@{
+    var json_state = Model.Songs.Select((x, i) => new { index = i, title = x.Title });
+}
+<script>
+    var __state__ = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(json_state))
+</script>
+
+
+
+@{
+    @*if using render script section put this in there too*@
+    await Html.RenderPartialAsync("_VueJs");
+}
+
+
+
+@*can use render script section here*@
+<script src="~/notmanaged/mvc_and_vue.js"></script>

@@ -1,0 +1,29 @@
+﻿
+<h1>Vue Only Example</h1>
+
+@*
+    Safe space for crafting complex forms, however more manual ui handling has to be done here.
+*@
+
+<div id="app">
+    <div>
+        <button @@click="model.songs.push({title: ''})">Add</button>
+        <button @@click="model.songs.pop()">Remove</button>
+    </div>
+    <input v-model="model.title" />
+    <div v-for="s in model.songs">
+        <input v-model="s.title" />
+    </div>
+    <button @@click="post()">Send iT</button>
+</div>
+
+@{
+    @* if using render script section put this in there too *@
+    await Html.RenderPartialAsync("_VueJs");
+}
+ 
+@* http client or use the fetch api *@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+@* can use render script section here *@
+<script src="~/notmanaged/vue_only.js"></script>

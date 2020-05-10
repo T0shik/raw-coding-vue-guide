@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div id="app">
+    <h1>{{test}}</h1>
+    <div>
+        <button @@click="model.songs.push({title: ''})">Add</button>
+        <button @@click="model.songs.pop()">Remove</button>
+    </div>
+    <input v-model="model.title" />
+    <div v-for="s in model.songs">
+        <input v-model="s.title" />
+    </div>
+    <button @@click="post()">Send iT</button>
+</div>

@@ -1,0 +1,25 @@
+﻿@{
+    var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+    var actionName = ViewContext.RouteData.Values["action"].ToString();
+    var jsFile = string.Concat("/dist/js/", controllerName, "_", actionName, ".js");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+
+    @{
+        await Html.RenderPartialAsync("_VueJs");
+    }
+
+    <script src="@jsFile"></script>
+
+</body>
+</html>
